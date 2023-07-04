@@ -5,14 +5,15 @@ provided by Keras
 
 from tensorflow import keras
 
-data = keras.datasets.imdb
+data = keras.datasets.imdb # IMDb dataset
 
-word_index = data.get_word_index()
+word_index = data.get_word_index() # Word index mapping
 
+# Modifying the word index mapping to have 4 special indices at the beginning
 word_index = {k: (v + 3) for k, v in word_index.items()}
-word_index["<PAD>"] = 0
+word_index["<PAD>"] = 0 # Padding which will be added to the end of a movie review during preprocessing if needed
 word_index["<START>"] = 1
-word_index["<UNK>"] = 2
+word_index["<UNK>"] = 2 # Token for unknown words
 word_index["UNUSED>"] = 3
 
 def review_encode(s):
